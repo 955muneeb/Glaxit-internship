@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muneeb - Resume</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="home.css">
+</head>
+<body>
+
+
+<header>
+    <h1>Muneeb Ur Rehman</h1>
+    <p>MERN Developer | software Student</p>
+</header>
+
+
+<nav>
+    <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
+
+
+<main>
+
+    
+    <section id="about">
+        <h2>About Me</h2>
+
+        <article>
+            <p>
+                I am a software student and aspiring MERN stack Development.
+                I enjoy building websites using HTML, CSS, JavaScript,
+                React and Firebase.
+            </p>
+        </article>
+    </section>
+
+   
+    <section id="education">
+        <h2>Education</h2>
+
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Degree</th>
+                    <th>Institute</th>
+                    <th>Year</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>Bachelor of Software engineering</td>
+                    <td>PAFIAST</td>
+                    <td>2022 - 2026</td>
+                    
+                </tr>
+
+                <tr>
+                    <td>Intermediate</td>
+                    <td>HITEC</td>
+                    <td>2020 - 2022</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+  
+    <section id="skills">
+        <h2>Technical Skills</h2>
+
+        <ul>
+            <li>HTML5</li>
+            <li>CSS3</li>
+            <li>JavaScript</li>
+            <li>React JS</li>
+            <li>Firebase</li>
+        </ul>
+
+        <h3>Learning Roadmap</h3>
+
+        <ol>
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>JavaScript</li>
+            <li>React</li>
+            <li>Backend Development</li>
+        </ol>
+    </section>
+
+    
+    <section>
+        <h2>Experience</h2>
+
+        <article>
+            <h3>Frontend Development</h3>
+
+            <p>
+                Worked on personal projects including invoice generators,
+                service provider platforms and responsive websites.
+            </p>
+        </article>
+    </section>
+
+   
+    <section id="contact">
+        <h2>Contact Me</h2>
+
+        <form>
+
+            <label for="name">Full Name:</label>
+            <br>
+            <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                minlength="3"
+                maxlength="50">
+            <br><br>
+
+            <label for="email">Email:</label>
+            <br>
+            <input
+                type="email"
+                id="email"
+                name="email"
+                required>
+            <br><br>
+
+            <label for="phone">Phone:</label>
+            <br>
+            <input
+                type="tel"
+                id="phone"
+                name="phone"
+                pattern="[0-9]{11}"
+                placeholder="03XXXXXXXXX"
+                required>
+            <br><br>
+
+            <label for="dob">Date of Birth:</label>
+            <br>
+            <input
+                type="date"
+                id="dob"
+                name="dob"
+                required>
+            <br><br>
+
+            <label for="message">Message:</label>
+            <br>
+            <textarea
+                id="message"
+                name="message"
+                rows="5"
+                cols="30"
+                required></textarea>
+
+            <br><br>
+
+            <input type="submit" value="Send Message">
+
+        </form>
+    </section>
+
+</main>
+
+
+<footer>
+    <p>&copy; 2026 Muneeb Ur Rehman. All Rights Reserved.</p>
+</footer>
+
+
+</body>
+</html>
