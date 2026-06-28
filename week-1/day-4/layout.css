@@ -1,0 +1,104 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    font-size: 100%; 
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: #333;
+    line-height: 1.6rem; 
+}
+
+
+.grid-container {
+    display: grid;
+    min-height: 100vh; 
+    
+
+    grid-template-columns: 100vw; 
+    
+
+    grid-template-areas:
+        "header"
+        "main"    /* Notice how Main is above the sidebars for mobile UX! */
+        "left"
+        "right"
+        "footer";
+}
+
+
+.header { grid-area: header; background-color: #2c3e50; color: white; padding: 1.5rem; text-align: center; }
+.sidebar-left { grid-area: left; background-color: #ecf0f1; padding: 1.5rem; }
+.main-content { grid-area: main; background-color: #ffffff; padding: 2rem; }
+.sidebar-right { grid-area: right; background-color: #ecf0f1; padding: 1.5rem; }
+.footer { grid-area: footer; background-color: #2c3e50; color: white; padding: 1.5rem; text-align: center; }
+
+
+
+.flex-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem; 
+    margin-top: 1.5rem;
+}
+
+.card {
+    background-color: #3498db;
+    color: white;
+    
+
+    flex: 1 1 100%; 
+    height: 10rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-0.25rem);
+}
+
+
+@media (min-width: 768px) {
+    .grid-container {
+
+        grid-template-columns: 15rem 1fr; 
+        grid-template-areas:
+            "header header"
+            "left main"
+            "right right" /* Right sidebar moves to the bottom of the main content */
+            "footer footer";
+    }
+
+    .card {
+
+        flex: 1 1 calc(50% - 1.5rem); 
+    }
+}
+
+
+@media (min-width: 1024px) {
+    .grid-container {
+        /* The classic 3-column Holy Grail layout */
+        grid-template-columns: 15rem 1fr 15rem; 
+        grid-template-areas:
+            "header header header"
+            "left main right"
+            "footer footer footer";
+    }
+
+    .card {
+        /* Cards shrink to roughly 33% for desktop */
+        flex: 1 1 calc(33.333% - 1.5rem); 
+    }
+}
