@@ -1,0 +1,76 @@
+/* --- Base Setup --- */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #b7deef;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    padding: 3rem 1rem;
+    margin: 0;
+}
+
+/* --- Responsive Container --- */
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1000px;
+    width: 100%;
+}
+
+/* --- The Card --- */
+.card {
+    background-color: #dcdce3;
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(241, 1, 1, 0.05); 
+    
+    /* The "Dimmer Switch" for smooth hover effects */
+    transition: transform 0.1s ease-out, box-shadow 0.3s ease-out;
+    
+    /* The "Choreographed Routine" for the page load */
+    animation: slideUpFade 0.2s ease-out forwards;
+    opacity: 0; 
+}
+
+/* Stagger the entry animations so they load in a wave */
+.card:nth-child(1) { animation-delay: 0.1s; }
+.card:nth-child(2) { animation-delay: 0.20s; }
+.card:nth-child(3) { animation-delay: 0.10s; }
+
+/* --- Hover State --- */
+.card:hover {
+    /* The "Magnifying Glass & Moving the Photo" */
+    transform: translateY(-100px) scale(1.03);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* --- Keyframe Animation for Page Load --- */
+@keyframes slideUpFade {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.card-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.card h3 {
+    margin: 0 0 0.5rem 0;
+    color: #0f172a;
+}
+
+.card p {
+    margin: 0;
+    color: #64748b;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
