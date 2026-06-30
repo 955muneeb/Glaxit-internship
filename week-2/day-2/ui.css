@@ -1,0 +1,110 @@
+/* --- Base Form Setup --- */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f1f5f9;
+    display: flex;
+    justify-content: center;
+    padding: 3rem 1rem;
+    margin: 0;
+    color: #334155;
+}
+
+.form-wrapper {
+    background-color: #ffffff;
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+}
+
+header h2 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    color: #0f172a;
+}
+
+header p {
+    font-size: 0.95rem;
+    color: #64748b;
+    margin-bottom: 2rem;
+}
+
+/* --- Layout & Spacing --- */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.5rem;
+}
+
+label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.required {
+    color: #ef4444; /* Red asterisk */
+}
+
+.hint-text {
+    font-size: 0.8rem;
+    color: #64748b;
+    margin-top: 0.4rem;
+}
+
+/* --- Base Input Styling --- */
+input, select {
+    padding: 0.75rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: all 0.2s ease;
+}
+
+/* --- UI Polish: Interactive States --- */
+
+/* 1. FOCUS: When the user clicks into the field (highly accessible) */
+input:focus, select:focus {
+    outline: none;
+    border-color: #3b82f6; /* Blue border */
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2); /* Soft blue glowing ring */
+}
+
+/* 2. VALID: If the user typed correctly (e.g., a real email format).
+   The :not(:placeholder-shown) ensures this only happens AFTER they start typing. */
+input:not(:placeholder-shown):valid {
+    border-color: #22c55e; /* Green border */
+    background-color: #f0fdf4; /* Very light green background */
+}
+
+/* 3. INVALID: If the user typed incorrectly (e.g., missed the '@' in the email) */
+input:not(:placeholder-shown):invalid {
+    border-color: #ef4444; /* Red border */
+    background-color: #fef2f2; /* Very light red background */
+}
+
+/* --- Submit Button Styling --- */
+.submit-btn {
+    width: 100%;
+    background-color: #0f172a;
+    color: #ffffff;
+    padding: 0.85rem;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    margin-top: 1rem;
+}
+
+.submit-btn:hover {
+    background-color: #334155;
+}
+
+.submit-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(15, 23, 42, 0.3);
+}
