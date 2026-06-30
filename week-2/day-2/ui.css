@@ -1,110 +1,101 @@
-/* --- Base Form Setup --- */
+/* --- Base Styling --- */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f1f5f9;
+    background-color: #FDFBF7; /* Warm paper-like background */
+    font-family: system-ui, -apple-system, sans-serif;
+    color: #1A1A1A;
     display: flex;
     justify-content: center;
-    padding: 3rem 1rem;
-    margin: 0;
-    color: #334155;
+    padding: 4rem 1rem;
 }
 
-.form-wrapper {
-    background-color: #ffffff;
-    padding: 2.5rem;
-    border-radius: 12px;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+.custom-form {
     width: 100%;
-    max-width: 500px;
+    max-width: 400px;
 }
 
-header h2 {
-    margin-top: 0;
-    margin-bottom: 0.5rem;
-    color: #0f172a;
+/* Sharp, bold borders instead of soft rounded boxes */
+fieldset {
+    background-color: #FFFFFF;
+    border: 3px solid #1A1A1A;
+    padding: 2rem;
+    box-shadow: 8px 8px 0px #1A1A1A; /* Unique hard shadow */
 }
 
-header p {
-    font-size: 0.95rem;
-    color: #64748b;
-    margin-bottom: 2rem;
-}
-
-/* --- Layout & Spacing --- */
-.form-group {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 1.5rem;
+legend {
+    background-color: #1A1A1A;
+    color: #FFFFFF;
+    padding: 0.4rem 1rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
 label {
+    display: block;
+    margin-top: 1.5rem;
+    font-weight: 700;
     font-size: 0.9rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
 }
 
-.required {
-    color: #ef4444; /* Red asterisk */
-}
-
-.hint-text {
+small {
+    display: block;
+    margin-top: 0.3rem;
     font-size: 0.8rem;
-    color: #64748b;
-    margin-top: 0.4rem;
+    color: #666;
 }
 
-/* --- Base Input Styling --- */
+/* --- Base Input Styles --- */
 input, select {
-    padding: 0.75rem;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    font-size: 1rem;
+    width: 100%;
+    box-sizing: border-box; /* Keeps inputs perfectly inside the box */
+    padding: 0.8rem;
+    margin-top: 0.5rem;
+    background-color: #FDFBF7;
+    border: 2px solid #1A1A1A;
     font-family: inherit;
     transition: all 0.2s ease;
 }
 
-/* --- UI Polish: Interactive States --- */
+/* =========================================
+   THE REQUIRED INTERACTIVE STATES
+   ========================================= */
 
-/* 1. FOCUS: When the user clicks into the field (highly accessible) */
+/* 1. FOCUS: Replaces default blue ring with a bold orange hard-shadow */
 input:focus, select:focus {
     outline: none;
-    border-color: #3b82f6; /* Blue border */
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2); /* Soft blue glowing ring */
+    border-color: #FF6B00; /* Bright orange */
+    box-shadow: 4px 4px 0px #FF6B00;
+    transform: translateY(-2px) translateX(-2px); /* Physically pops out */
 }
 
-/* 2. VALID: If the user typed correctly (e.g., a real email format).
-   The :not(:placeholder-shown) ensures this only happens AFTER they start typing. */
+/* 2. VALID: Adds a thick green accent line to the left side */
 input:not(:placeholder-shown):valid {
-    border-color: #22c55e; /* Green border */
-    background-color: #f0fdf4; /* Very light green background */
+    border-left: 8px solid #059669; /* Emerald Green */
 }
 
-/* 3. INVALID: If the user typed incorrectly (e.g., missed the '@' in the email) */
+/* 3. INVALID: Adds a thick red accent and slightly tints the background */
 input:not(:placeholder-shown):invalid {
-    border-color: #ef4444; /* Red border */
-    background-color: #fef2f2; /* Very light red background */
+    border-left: 8px solid #E11D48; /* Rose Red */
+    background-color: #FFF0F2;
 }
 
-/* --- Submit Button Styling --- */
-.submit-btn {
+/* --- Submit Button --- */
+button {
+    margin-top: 2.5rem;
     width: 100%;
-    background-color: #0f172a;
-    color: #ffffff;
-    padding: 0.85rem;
-    border: none;
-    border-radius: 6px;
+    padding: 1rem;
+    background-color: #1A1A1A;
+    color: #FFFFFF;
+    border: 2px solid #1A1A1A;
     font-size: 1rem;
-    font-weight: 600;
+    font-weight: bold;
     cursor: pointer;
-    transition: background-color 0.2s ease;
-    margin-top: 1rem;
+    transition: all 0.2s ease;
 }
 
-.submit-btn:hover {
-    background-color: #334155;
-}
-
-.submit-btn:focus {
+button:hover, button:focus {
+    background-color: #FF6B00;
+    box-shadow: 4px 4px 0px #1A1A1A;
+    transform: translateY(-2px) translateX(-2px);
     outline: none;
-    box-shadow: 0 0 0 3px rgba(15, 23, 42, 0.3);
 }
