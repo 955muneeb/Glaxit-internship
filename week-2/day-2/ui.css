@@ -1,101 +1,124 @@
-/* --- Base Styling --- */
+/* --- Base Styling & Typography --- */
 body {
-    background-color: #FDFBF7; /* Warm paper-like background */
-    font-family: system-ui, -apple-system, sans-serif;
-    color: #1A1A1A;
+    background-color: #f8fafc; /* Very soft slate gray */
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: #334155;
     display: flex;
     justify-content: center;
-    padding: 4rem 1rem;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 2rem 1rem;
 }
 
 .custom-form {
     width: 100%;
-    max-width: 400px;
+    max-width: 420px;
 }
 
-/* Sharp, bold borders instead of soft rounded boxes */
+/* --- Resetting the Fieldset for a Premium Look --- */
 fieldset {
-    background-color: #FFFFFF;
-    border: 3px solid #1A1A1A;
-    padding: 2rem;
-    box-shadow: 8px 8px 0px #1A1A1A; /* Unique hard shadow */
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 2.5rem 2rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05); /* Soft, modern shadow */
+    margin: 0;
 }
 
+/* Making the legend look like a sleek dashboard header */
 legend {
-    background-color: #1A1A1A;
-    color: #FFFFFF;
-    padding: 0.4rem 1rem;
-    font-weight: bold;
-    letter-spacing: 1px;
-    text-transform: uppercase;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #0f172a;
+    padding: 0;
+    margin-bottom: 1rem;
+    display: block;
+    width: 100%;
 }
 
+/* --- Clean Labels & Hints --- */
 label {
     display: block;
-    margin-top: 1.5rem;
-    font-weight: 700;
+    margin-top: 1.25rem;
+    font-weight: 500;
     font-size: 0.9rem;
+    color: #475569;
+    margin-bottom: 0.35rem;
+}
+
+label span[aria-hidden="true"] {
+    color: #ef4444; /* Subtle red asterisk for required fields */
 }
 
 small {
     display: block;
-    margin-top: 0.3rem;
+    margin-top: 0.4rem;
     font-size: 0.8rem;
-    color: #666;
+    color: #94a3b8;
 }
 
-/* --- Base Input Styles --- */
+/* --- Premium Input Fields --- */
 input, select {
     width: 100%;
-    box-sizing: border-box; /* Keeps inputs perfectly inside the box */
-    padding: 0.8rem;
-    margin-top: 0.5rem;
-    background-color: #FDFBF7;
-    border: 2px solid #1A1A1A;
+    box-sizing: border-box;
+    padding: 0.75rem 1rem;
+    background-color: #f8fafc;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px; /* Smooth, modern corners */
     font-family: inherit;
-    transition: all 0.2s ease;
+    font-size: 0.95rem;
+    color: #1e293b;
+    transition: all 0.2s ease-in-out;
+}
+
+input::placeholder {
+    color: #94a3b8;
 }
 
 /* =========================================
-   THE REQUIRED INTERACTIVE STATES
+   PROFESSIONAL INTERACTIVE STATES
    ========================================= */
 
-/* 1. FOCUS: Replaces default blue ring with a bold orange hard-shadow */
+/* 1. FOCUS: A soft blue glowing ring, standard for premium SaaS products */
 input:focus, select:focus {
     outline: none;
-    border-color: #FF6B00; /* Bright orange */
-    box-shadow: 4px 4px 0px #FF6B00;
-    transform: translateY(-2px) translateX(-2px); /* Physically pops out */
+    border-color: #3b82f6; 
+    background-color: #ffffff;
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1); 
 }
 
-/* 2. VALID: Adds a thick green accent line to the left side */
+/* 2. VALID: Subtle green border and very faint green tint */
 input:not(:placeholder-shown):valid {
-    border-left: 8px solid #059669; /* Emerald Green */
+    border-color: #10b981;
+    background-color: #f0fdf4;
 }
 
-/* 3. INVALID: Adds a thick red accent and slightly tints the background */
+/* 3. INVALID: Subtle red border and faint red tint */
 input:not(:placeholder-shown):invalid {
-    border-left: 8px solid #E11D48; /* Rose Red */
-    background-color: #FFF0F2;
+    border-color: #ef4444;
+    background-color: #fef2f2;
 }
 
-/* --- Submit Button --- */
+/* --- The Corporate Submit Button --- */
 button {
-    margin-top: 2.5rem;
+    margin-top: 2rem;
     width: 100%;
-    padding: 1rem;
-    background-color: #1A1A1A;
-    color: #FFFFFF;
-    border: 2px solid #1A1A1A;
+    padding: 0.875rem;
+    background-color: #0f172a; /* Deep, professional slate/navy */
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
     font-size: 1rem;
-    font-weight: bold;
+    font-weight: 600;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: background-color 0.2s ease, transform 0.1s ease;
 }
 
-button:hover, button:focus {
-    background-color: #FF6B00;
-    box-shadow: 4px 4px 0px #1A1A1A;
-    transform: translateY(-2px) translateX(-2px);
-    outline: none;
+button:hover {
+    background-color: #1e293b;
+}
+
+button:active {
+    transform: scale(0.98); /* Slight click-in effect */
 }
