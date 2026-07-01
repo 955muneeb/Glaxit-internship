@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scalable Lead Form</title>
+    <link rel="stylesheet" href="bem.css">
+</head>
+<body>
+
+    <form class="lead-form" novalidate>
+        
+        <fieldset class="lead-form__fieldset">
+            <legend class="lead-form__legend">Client Intake</legend>
+
+            <div class="lead-form__field">
+                <label class="lead-form__label" for="userName">
+                    Full Name <span class="lead-form__required" aria-hidden="true">*</span>
+                </label>
+                <input class="lead-form__input" type="text" id="userName" required aria-required="true" placeholder="e.g. Muuneeb Ur Rehman">
+            </div>
+
+            <div class="lead-form__field">
+                <label class="lead-form__label" for="userEmail">
+                    Business Email <span class="lead-form__required" aria-hidden="true">*</span>
+                </label>
+                <input class="lead-form__input" type="email" id="userEmail" required aria-required="true" placeholder="muuneeb@example.com" aria-describedby="emailNote">
+                <small class="lead-form__hint" id="emailNote">We'll send the project proposal here.</small>
+            </div>
+
+            <div class="lead-form__field">
+                <label class="lead-form__label" for="userService">Service Required</label>
+                <select class="lead-form__input" id="userService">
+                    <option value="frontend">Frontend Development</option>
+                    <option value="backend">Backend API</option>
+                    <option value="fullstack">Full MERN Stack</option>
+                </select>
+            </div>
+
+            <button class="lead-form__btn lead-form__btn--primary" type="submit">Submit Lead</button>
+        </fieldset>
+
+    </form>
+
+</body>
+</html>

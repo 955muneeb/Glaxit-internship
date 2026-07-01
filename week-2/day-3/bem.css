@@ -1,0 +1,195 @@
+/* =========================
+   CSS Variables
+========================= */
+
+:root {
+    --bg-color: #f8fafc;
+    --card-color: #ffffff;
+    --text-color: #334155;
+    --heading-color: #0f172a;
+    --border-color: #d1d5db;
+
+    --primary-color: #0f172a;
+    --primary-hover: #1e293b;
+
+    --focus-color: #3b82f6;
+    --success-color: #10b981;
+    --error-color: #ef4444;
+
+    --radius: 8px;
+}
+
+/* =========================
+   Page
+========================= */
+
+body {
+    margin: 0;
+    padding: 20px;
+
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: var(--bg-color);
+    color: var(--text-color);
+
+    font-family: Arial, sans-serif;
+}
+
+/* =========================
+   Lead Form (Block)
+========================= */
+
+.lead-form {
+    width: 100%;
+    max-width: 420px;
+}
+
+/* =========================
+   Fieldset
+========================= */
+
+.lead-form__fieldset {
+    background: var(--card-color);
+
+    padding: 30px;
+
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+/* =========================
+   Heading
+========================= */
+
+.lead-form__legend {
+    font-size: 24px;
+    font-weight: bold;
+
+    color: var(--heading-color);
+
+    margin-bottom: 20px;
+}
+
+/* =========================
+   Form Field
+========================= */
+
+.lead-form__field {
+    margin-bottom: 20px;
+}
+
+/* =========================
+   Labels
+========================= */
+
+.lead-form__label {
+    display: block;
+
+    margin-bottom: 6px;
+
+    font-weight: 600;
+}
+
+.lead-form__required {
+    color: var(--error-color);
+}
+
+/* =========================
+   Input & Select
+========================= */
+
+.lead-form__input {
+    width: 100%;
+
+    padding: 12px;
+
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+
+    box-sizing: border-box;
+
+    font-size: 15px;
+
+    transition: 0.3s;
+}
+
+.lead-form__input::placeholder {
+    color: gray;
+}
+
+/* Focus */
+
+.lead-form__input:focus {
+    outline: none;
+
+    border-color: var(--focus-color);
+
+    box-shadow: 0 0 5px rgba(59,130,246,.3);
+}
+
+/* Valid */
+
+.lead-form__input:not(:placeholder-shown):valid {
+    border-color: var(--success-color);
+}
+
+/* Invalid */
+
+.lead-form__input:not(:placeholder-shown):invalid {
+    border-color: var(--error-color);
+}
+
+/* =========================
+   Hint Text
+========================= */
+
+.lead-form__hint {
+    display: block;
+
+    margin-top: 5px;
+
+    font-size: 13px;
+
+    color: gray;
+}
+
+/* =========================
+   Button
+========================= */
+
+.lead-form__btn {
+    width: 100%;
+
+    padding: 12px;
+
+    border: none;
+    border-radius: var(--radius);
+
+    font-size: 16px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+/* Primary Button (Modifier) */
+
+.lead-form__btn--primary {
+    background: var(--primary-color);
+    color: white;
+}
+
+.lead-form__btn--primary:hover {
+    background: var(--primary-hover);
+}
+
+.lead-form__btn--primary:active {
+    transform: scale(.98);
+}s
