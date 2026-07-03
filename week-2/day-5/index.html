@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="grid.css">
+</head>
+<body>
+
+    <div class="dashboard">
+        
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar__brand">LeadPro CRM</div>
+            <nav class="sidebar__nav">
+                <a href="#" class="sidebar__link sidebar__link--active">Dashboard</a>
+                <a href="#" class="sidebar__link"> Leads</a>
+                <a href="#" class="sidebar__link">Analytics</a>
+                <a href="#" class="sidebar__link"> Settings</a>
+            </nav>
+        </aside>
+
+        <header class="header">
+            <button id="menu-toggle" class="header__menu-btn">☰ Menu</button>
+            
+            <div class="header__search">
+                <input type="text" placeholder="Search leads or reports...">
+            </div>
+            
+            <div class="header__profile">
+                <span id="dynamic-greeting" class="header__greeting"></span>
+                <span class="header__user">MUNEEB UR REHMAN</span>
+                <div class="header__avatar">MR</div>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <h1 class="main-content__title">Dashboard Overview--THIS IS DUMMY DATA</h1>
+            
+            <div class="widget-grid">
+                <div class="widget">
+                    <p class="widget__label">Total Leads</p>
+                    <h3 class="widget__value">1,284</h3>
+                </div>
+                <div class="widget">
+                    <p class="widget__label">Conversion Rate</p>
+                    <h3 class="widget__value">14.2%</h3>
+                </div>
+                <div class="widget">
+                    <p class="widget__label">Active Campaigns</p>
+                    <h3 class="widget__value">7</h3>
+                </div>
+                <div class="widget">
+                    <p class="widget__label">Revenue Generated</p>
+                    <h3 class="widget__value">$42,500</h3>
+                </div>
+            </div>
+
+            <div class="data-table-container">
+                <h2 class="data-table-container__title">Recent Activity</h2>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Lead Name</th>
+                            <th>Service Requested</th>
+                            <th>Status</th>
+                            <th>Date Added</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Muneeb </td>
+                            <td>Frontend Development</td>
+                            <td><span class="badge badge--new">New</span></td>
+                            <td>Oct 24, 2026</td>
+                        </tr>
+                        <tr>
+                            <td>Aiyesha</td>
+                            <td>Full MERN Stack</td>
+                            <td><span class="badge badge--contacted">Contacted</span></td>
+                            <td>Oct 23, 2026</td>
+                        </tr>
+                        <tr>
+                            <td>Ali</td>
+                            <td>SEO Optimization</td>
+                            <td><span class="badge badge--closed">Closed Won</span></td>
+                            <td>Oct 21, 2026</td>
+                        </tr>
+                        <tr>
+                            <td>Nawaz</td>
+                            <td>Mobile App Build</td>
+                            <td><span class="badge badge--new">New</span></td>
+                            <td>Oct 20, 2026</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
