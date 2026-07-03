@@ -5,20 +5,13 @@ const menuToggleBtn = document.getElementById('menu-toggle');
 const sidebar = document.getElementById('sidebar');
 const greetingElement = document.getElementById('dynamic-greeting');
 
-// ==========================================
-// 2. Sidebar Toggle Logic (Mobile Menu)
-// ==========================================
-// Listen for a click on the menu button
 if (menuToggleBtn && sidebar) {
     menuToggleBtn.addEventListener('click', function() {
-        // Toggle the 'sidebar--visible' class on and off
+
         sidebar.classList.toggle('sidebar--visible');
     });
 }
 
-// ==========================================
-// 3. Dynamic Time-Based Greeting
-// ==========================================
 function displayGreeting() {
     if (!greetingElement) return; // Safety check
 
