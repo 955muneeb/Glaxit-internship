@@ -1,0 +1,281 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* --- Smooth Entry Animations --- */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-6px); }
+    100% { transform: translateY(0px); }
+}
+
+/* --- Reset & Base Layout --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', system-ui, sans-serif;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    padding: 4rem 2rem;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+    
+    /* Premium dark scenic wallpaper with an animated linear gradient overlay */
+    background: linear-gradient(-45deg, rgba(15, 23, 42, 0.85), rgba(30, 41, 59, 0.8), rgba(17, 24, 39, 0.85)), 
+                url('https://images.unsplash.com/photo-1518173946687-a4c8a3b1f98e?q=80&w=1920&auto=format&fit=crop') no-repeat center center fixed;
+    background-size: 400% 400%, cover;
+    animation: gradientBG 15s ease infinite;
+}
+
+/* --- Dashboard Grid Container --- */
+.dashboard-container {
+    max-width: 950px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: start;
+    z-index: 10;
+}
+
+/* --- Animated Typography --- */
+h1 {
+    grid-column: 1 / -1; 
+    font-size: 3rem;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+    background: linear-gradient(to right, #38bdf8, #818cf8, #38bdf8);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientBG 6s linear infinite, fadeInDown 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* --- Premium Glassmorphism Card System --- */
+.card {
+    /* Frosted glass parameters */
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(16px) saturate(120%);
+    -webkit-backdrop-filter: blur(16px) saturate(120%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    padding: 2.25rem;
+    box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+    
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, box-shadow 0.4s ease;
+    
+    /* Animation entry cascade */
+    opacity: 0;
+    animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+#weather-card { animation-delay: 0.1s; }
+#quote-card { animation-delay: 0.2s; }
+#favorites-card { 
+    grid-column: 1 / -1; 
+    animation-delay: 0.3s;
+}
+
+/* Subtle micro-interaction on hovering over individual panels */
+.card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(56, 189, 248, 0.4);
+    box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.6), 0 0 40px 5px rgba(56, 189, 248, 0.05);
+}
+
+.card h3 {
+    font-size: 1rem;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 0.75rem;
+}
+
+/* --- Form Search Control UI --- */
+.search-group {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.search-group input {
+    flex-grow: 1;
+    padding: 0.75rem 1.25rem;
+    border-radius: 12px;
+    background: rgba(15, 23, 42, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 0.95rem;
+    outline: none;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.search-group input:focus {
+    border-color: #38bdf8;
+    background: rgba(15, 23, 42, 0.6);
+    box-shadow: 0 0 15px rgba(56, 189, 248, 0.25);
+}
+
+.search-group button {
+    width: auto;
+    padding: 0.75rem 1.5rem;
+}
+
+/* --- Weather Layout Metrics --- */
+.weather-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    animation: float 5s ease-in-out infinite; /* Fluid breathing animation for the live weather metrics */
+}
+
+.temperature {
+    font-size: 4rem;
+    font-weight: 800;
+    background: linear-gradient(to bottom, #ffffff, #cbd5e1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1;
+    margin-bottom: 0.25rem;
+}
+
+.location {
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: #38bdf8;
+}
+
+.details {
+    color: #94a3b8;
+    margin-top: 0.5rem;
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+/* --- Quote Layout Metrics --- */
+#quote-display {
+    font-size: 1.25rem;
+    line-height: 1.75;
+    color: #e2e8f0;
+    font-style: italic;
+    flex-grow: 1;
+    margin-bottom: 2rem;
+    border-left: 3px solid #818cf8;
+    padding-left: 1.5rem;
+}
+
+#quote-display strong {
+    display: block;
+    margin-top: 1.25rem;
+    font-size: 0.95rem;
+    color: #94a3b8;
+    font-style: normal;
+    letter-spacing: 0.02em;
+}
+
+/* --- Dynamic Global Buttons --- */
+button {
+    background: linear-gradient(135deg, #38bdf8, #2563eb);
+    color: white;
+    border: none;
+    padding: 0.9rem 1.75rem;
+    border-radius: 14px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    width: 100%;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+}
+
+button:hover {
+    background: linear-gradient(135deg, #0ea5e9, #1d4ed8);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+/* --- Favorite Quotes Dynamic Subgrid --- */
+#saved-quotes-list {
+    list-style-type: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.25rem;
+}
+
+#saved-quotes-list li {
+    background: rgba(15, 23, 42, 0.3);
+    padding: 1.25rem;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #cbd5e1;
+    transition: all 0.3s ease;
+}
+
+#saved-quotes-list li:hover {
+    background: rgba(15, 23, 42, 0.5);
+    border-color: rgba(129, 140, 248, 0.3);
+}
+
+#saved-quotes-list li strong {
+    color: #818cf8;
+}
+
+/* --- Fluid Mobile Responsiveness --- */
+@media (max-width: 768px) {
+    body {
+        padding: 2rem 1rem;
+    }
+    .dashboard-container {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    h1 {
+        font-size: 2.25rem;
+    }
+}

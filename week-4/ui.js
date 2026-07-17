@@ -1,27 +1,28 @@
-// Update the quote DOM element
 export const renderQuote = (element, quoteData) => {
-    element.innerHTML = `"${quoteData.text}" <br><br><strong>— ${quoteData.author}</strong>`;
+    element.innerHTML = `"${quoteData.text}" <strong>— ${quoteData.author}</strong>`;
 };
 
-// Update the weather DOM element
-export const renderWeather = (element, weatherData) => {
+export const renderWeather = (element, weatherData, locationName = "Taxila, Punjab") => {
     if (!weatherData) {
-        element.innerHTML = "Unable to load weather data.";
+        element.innerHTML = "<span style='color: #dc2626;'>Unable to load weather data.</span>";
         return;
     }
+    
     element.innerHTML = `
-        <strong>Temperature:</strong> ${weatherData.temperature}°C <br>
-        <strong>Wind Speed:</strong> ${weatherData.windspeed} km/h
+        <div class="weather-info">
+            <div class="temperature">${weatherData.temperature}°C</div>
+            <div class="location">📍 ${locationName}</div>
+            <div class="details">Wind Speed: ${weatherData.windspeed} km/h</div>
+        </div>
     `;
 };
 
-// Render the list of saved quotes
 export const renderSavedQuotesList = (listElement, quotes) => {
     if (quotes.length === 0) {
-        listElement.innerHTML = "<li>No favorite quotes saved yet.</li>";
+        listElement.innerHTML = "<li style='color: #64748b; font-style: italic;'>No favorite quotes saved yet.</li>";
         return;
     }
     listElement.innerHTML = quotes.map(q => 
-        `<li style="margin-bottom: 0.5rem;">"${q.text}" — <em>${q.author}</em></li>`
+        `<li>"${q.text}" <br><strong>— ${q.author}</strong></li>`
     ).join('');
 };
