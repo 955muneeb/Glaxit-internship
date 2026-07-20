@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Task List with Delegation</title>
+    <style>
+        /* UI Enhancements */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            padding-top: 50px;
+            margin: 0;
+        }
+
+        .container {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 450px;
+        }
+
+        h2 {
+            margin-top: 0;
+            color: #333;
+            text-align: center;
+        }
+
+        .input-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        input {
+            flex-grow: 1;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        input:focus {
+            border-color: #007bff;
+        }
+
+        .btn-add {
+            padding: 12px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+
+        .btn-add:hover {
+            background-color: #0056b3;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        /* Flexbox added to align text and delete button */
+        li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 15px;
+            background: #fdfdfd;
+            border: 1px solid #e0e0e0;
+            margin-bottom: 8px;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+
+        li:hover {
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        /* Wrapper for the text to make striking it out easier */
+        .task-text {
+            flex-grow: 1;
+            pointer-events: none; /* Prevents clicks on text from confusing event.target */
+        }
+
+        .completed {
+            background: #f8f9fa;
+        }
+
+        .completed .task-text {
+            text-decoration: line-through;
+            color: #888;
+        }
+
+        .btn-delete {
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 6px 12px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background 0.2s;
+        }
+
+        .btn-delete:hover {
+            background-color: #cc0000;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>My Tasks</h2>
+        
+        <div class="input-group">
+            <input type="text" id="taskInput" placeholder="What needs to be done?">
+            <button id="addTaskBtn" class="btn-add">Add</button>
+        </div>
+
+        <ul id="taskList">
+            <li>
+                <span class="task-text">Learn Event Bubbling</span>
+                <button class="btn-delete">Delete</button>
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        const taskInput = document.getElementById('taskInput');
+        const addTaskBtn = document.getElementById('addTaskBtn');
+        const taskList = document.getElementById('taskList');
+
+        // --- 1. Creating and appending nodes ---
+        addTaskBtn.addEventListener('click', () => {
+            const taskText = taskInput.value.trim();
+            
+            if (taskText !== '') {
+                const newListItem = document.createElement('li');
+                
+                const taskSpan = document.createElement('span');
+                taskSpan.className = 'task-text';
+                taskSpan.textContent = taskText;
+                newListItem.appendChild(taskSpan);
+
+                const deleteBtn = document.createElement('button');
+                deleteBtn.className = 'btn-delete';
+                deleteBtn.textContent = 'Delete';
+                newListItem.appendChild(deleteBtn);
+
+                taskList.appendChild(newListItem);
+                taskInput.value = '';
+            }
+        });
+
+        taskList.addEventListener('click', (event) => {
+            
+            // SCENARIO A: Did the user click the delete button?
+            if (event.target.classList.contains('btn-delete')) {
+                // Find the parent <li> of the clicked button and remove it entirely
+                const liToRemove = event.target.closest('li');
+                liToRemove.remove();
+            } 
+            
+            // SCENARIO B: Did the user click the list item itself to mark it complete?
+            else if (event.target.tagName === 'LI') {
+                event.target.classList.toggle('completed');
+            }
+        });
+    </script>
+</body>
+</html>
