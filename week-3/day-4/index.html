@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form Validation</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .form-card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        h2 {
+            margin-top: 0;
+            color: #333;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+            color: #444;
+            font-size: 14px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 15px;
+            outline: none;
+            box-sizing: border-box;
+            transition: border-color 0.2s;
+        }
+
+        input:focus {
+            border-color: #007bff;
+        }
+
+        /* Styling for the inline error messages */
+        .error-message {
+            color: #dc3545;
+            font-size: 12px;
+            margin-top: 5px;
+            min-height: 18px; /* Prevents layout shifting when error appears */
+        }
+
+        input.invalid {
+            border-color: #dc3545;
+            background-color: #fff8f8;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 12px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background 0.2s;
+            margin-top: 10px;
+        }
+
+        .btn-submit:hover {
+            background-color: #218838;
+        }
+
+        .success-message {
+            color: #28a745;
+            text-align: center;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-card">
+        <h2>Create Account</h2>
+        
+        <form id="registrationForm" novalidate>
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required>
+                <div class="error-message" id="emailError"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+                <div class="error-message" id="passwordError"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" required>
+                <div class="error-message" id="confirmPasswordError"></div>
+            </div>
+
+            <button type="submit" class="btn-submit">Register</button>
+            <div id="formSuccess" class="success-message"></div>
+        </form>
+    </div>
+
+    <script>
+        const form = document.getElementById('registrationForm');
+        
+        form.addEventListener('submit', function(event) {
+            // 1. Prevent the default page refresh submission behavior
+            event.preventDefault();
+
+            // Clear previous errors and success messages
+            clearErrors();
+
+            // 2. Read form data using the FormData object
+            const formData = new FormData(form);
+            const email = formData.get('email').trim();
+            const password = formData.get('password');
+            const confirmPassword = formData.get('confirmPassword');
+
+            let isFormValid = true;
+
+            // 3. Custom Validation Logic
+            
+            // Check Email (Basic blank check)
+            if (email === '') {
+                showError('email', 'Email is required.');
+                isFormValid = false;
+            }
+
+            // Check Password Length (Must be at least 8 characters)
+            if (password.length < 8) {
+                showError('password', 'Password must be at least 8 characters long.');
+                isFormValid = false;
+            }
+
+            // Check if Passwords Match
+            if (password !== confirmPassword) {
+                showError('confirmPassword', 'Passwords do not match.');
+                isFormValid = false;
+            } else if (confirmPassword === '') {
+                showError('confirmPassword', 'Please confirm your password.');
+                isFormValid = false;
+            }
+
+            // 4. Final Submission Processing
+            if (isFormValid) {
+                document.getElementById('formSuccess').textContent = '🎉 Registration successful!';
+                // In a real application, you would proceed to send 'formData' to a server here using fetch()
+                form.reset(); 
+            }
+        });
+
+        // Helper function to render inline error messages
+        function showError(inputName, message) {
+            const inputField = document.getElementById(inputName);
+            const errorDiv = document.getElementById(`${inputName}Error`);
+            
+            inputField.classList.add('invalid');
+            errorDiv.textContent = message;
+        }
+
+        // Helper function to clear errors out before re-validating
+        function clearErrors() {
+            const inputs = form.querySelectorAll('input');
+            const errorDivs = form.querySelectorAll('.error-message');
+            document.getElementById('formSuccess').textContent = '';
+
+            inputs.forEach(input => input.classList.remove('invalid'));
+            errorDivs.forEach(div => div.textContent = '');
+        }
+    </script>
+</body>
+</html>

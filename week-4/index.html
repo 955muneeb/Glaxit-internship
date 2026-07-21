@@ -8,28 +8,67 @@
 </head>
 <body>
 
-    <div class="dashboard-container">
-        <h1>Daily Dashboard</h1>
+    <div class="app-shell">
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="brand-icon">☁️</div>
+                <div>
+                    <div class="brand-name">WeatherPro</div>
+                    <div class="brand-sub">Dashboard</div>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <button class="nav-item active"><span>🏠</span> Dashboard</button>
+                <button class="nav-item"><span>☀️</span> Weather</button>
+                <button class="nav-item"><span>💬</span> Quotes</button>
+                <button class="nav-item"><span>⭐</span> Favorites</button>
+            </nav>
+            <div class="sidebar-footer">
+                <p>Stay positive, stay warm, and keep the weather red-hot.</p>
+            </div>
+        </aside>
 
-        <div class="card" id="weather-card">
-            <h3>🌤️ Local Weather</h3>
-            <form id="search-form" class="search-group">
-                <input type="text" id="search-input" placeholder="Search city (e.g., Taxila, London)..." required />
-                <button type="submit" id="search-btn">Search</button>
-            </form>
-            <div id="weather-display">Loading weather data...</div>
-        </div>
+        <main class="main-panel">
+            <header class="main-header">
+                <div>
+                    <p class="welcome-text">Good morning, <strong>Saman Sajjad</strong> 👋</p>
+                    <p class="subtitle">Here's what's happening with the weather today.</p>
+                </div>
+                <div class="time-card">
+                    <p>Tuesday, 20 May 2025</p>
+                    <strong>11:15:32 AM</strong>
+                </div>
+            </header>
 
-        <div class="card" id="quote-card">
-            <h3>💡 Quote of the Day</h3>
-            <div id="quote-display">Loading quote...</div>
-            <button id="save-quote-btn">Save to Favorites</button>
-        </div>
+            <section class="search-area">
+                <form id="search-form" class="search-group">
+                    <input type="text" id="search-input" placeholder="Enter city name..." required />
+                    <button type="submit" id="search-btn">🔍 Search</button>
+                </form>
+            </section>
 
-        <div class="card" id="favorites-card">
-            <h3>⭐ Favorite Quotes</h3>
-            <ul id="saved-quotes-list"></ul>
-        </div>
+                <div class="dashboard-grid">
+                <div class="card" id="weather-card">
+                    <div class="card-title"><span class="card-icon">🌤️</span> Current Weather</div>
+                    <div id="weather-display" class="weather-display">Loading weather data...</div>
+                    <div class="weather-meta">
+                        <div class="meta-item"><span>📍</span> Taxila, PK</div>
+                        <div class="meta-item"><span>⏱️</span> Updated just now</div>
+                    </div>
+                </div>
+
+                <div class="card" id="quote-card">
+                    <div class="card-title"><span class="card-icon">💬</span> Quote of the Day</div>
+                    <div id="quote-display">Loading quote...</div>
+                    <button id="save-quote-btn">Save Quote</button>
+                </div>
+
+                <div class="card" id="favorites-card">
+                    <div class="card-title"><span class="card-icon">⭐</span> Your Favorite Quotes</div>
+                    <ul id="saved-quotes-list"></ul>
+                </div>
+            </div>
+        </main>
     </div>
 
     <script type="module" src="app.js"></script>
