@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Enterprise Stopwatch</title>
+    <style>
+        body { font-family: monospace; text-align: center; margin-top: 100px; background: #0f172a; color: #38bdf8; }
+        .clock { font-size: 3.5rem; letter-spacing: 2px; margin-bottom: 20px; }
+        button { padding: 10px 20px; font-size: 1rem; cursor: pointer; border: none; border-radius: 4px; font-weight: bold; }
+        #startBtn { background: #22c55e; color: white; }
+        #stopBtn { background: #ef4444; color: white; }
+        #resetBtn { background: #eab308; color: black; }
+    </style>
+</head>
+<body>
+    <div class="clock" id="display">00:00:00</div>
+    <div>
+        <button id="startBtn">Start</button>
+        <button id="stopBtn">Stop</button>
+        <button id="resetBtn">Reset</button>
+    </div>
+
+    <script>
+        let elapsedTime = 0; // stored in milliseconds
+        let timerInterval = null;
+        let isRunning = false;
+
+        const display = document.getElementById('display');
+        const startBtn = document.getElementById('startBtn');
+        const stopBtn = document.getElementById('stopBtn');
+        const resetBtn = document.getElementById('resetBtn');
+
+        function formatTime(ms) {
+            const minutes = String(Math.floor(ms / 60000)).padStart(2, '0');
+            const seconds = String(Math.floor((ms % 60000) / 1000)).padStart(2, '0');
+            const centiseconds = String(Math.floor((ms % 1000) / 10)).padStart(2, '0');
+            return `${minutes}:${seconds}:${centiseconds}`;
+        }
+
+        function startTimer() {
+            if (isRunning) return; // Guard clause prevents double-interval race conditions
+            isRunning = true;
+            
+            const startTime = Date.now() - elapsedTime;
+            timerInterval = setInterval(() => {
+                elapsedTime = Date.now() - startTime;
+                display.textContent = formatTime(elapsedTime);
+            }, 10);
+        }
+
+        function stopTimer() {
+            clearInterval(timerInterval);
+            isRunning = false;
+        }
+
+        function resetTimer() {
+            stopTimer();
+            elapsedTime = 0;
+            display.textContent = "00:00:00";
+        }
+
+        startBtn.addEventListener('click', startTimer);
+        stopBtn.addEventListener('click', stopTimer);
+        resetBtn.addEventListener('click', resetTimer);
+    </script>
+</body>
+</html> 

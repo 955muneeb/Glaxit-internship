@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Resilient API Fetcher</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; background: #f8fafc; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; margin-top: 20px; }
+        .card { background: white; padding: 16px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        .error-banner { background: #fee2e2; color: #b91c1c; padding: 12px; border-radius: 6px; border: 1px solid #fecaca; display: none; }
+        .spinner { font-style: italic; color: #64748b; }
+    </style>
+</head>
+<body>
+    <h2>User Directory Grid</h2>
+    <button id="fetchNormal">Fetch Users</button>
+    <button id="triggerError" style="background: #ef4444; color: white;">Test Broken URL Error</button>
+    
+    <div id="errorBanner" class="error-banner"></div>
+    <div id="loader" class="spinner" style="display:none;">Loading telemetry data...</div>
+    <div id="userGrid" class="grid"></div>
+
+    <script>
+        const grid = document.getElementById('userGrid');
+        const loader = document.getElementById('loader');
+        const errorBanner = document.getElementById('errorBanner');
+
+        async function fetchUsers(url) {
+            loader.style.display = 'block';
+            grid.innerHTML = '';
+            errorBanner.style.display = 'none';
+
+            try {
+                const response = await fetch(url);
+                if (!response.ok) throw new Error(`HTTP System Error: Status ${response.status}`);
+                
+                const users = await response.json();
+                renderCards(users);
+            } catch (error) {
+                errorBanner.textContent = `Operation Failed: ${error.message}. Please verify the upstream service.`;
+                errorBanner.style.display = 'block';
+            } finally {
+                loader.style.display = 'none'; // Always executes to clean up loaders
+            }
+        }
+
+        function renderCards(users) {
+            grid.innerHTML = users.map(user => `
+                <div class="card">
+                    <strong>${user.name}</strong>
+                    <p style="color: #64748b; font-size: 0.9rem; margin: 4px 0 0;">@${user.username}</p>
+                    <small style="color: #2563eb;">${user.email}</small>
+                </div>
+            `).join('');
+        }
+
+        document.getElementById('fetchNormal').addEventListener('click', () => {
+            fetchUsers('https://jsonplaceholder.typicode.com/users');
+        });
+
+        document.getElementById('triggerError').addEventListener('click', () => {
+            fetchUsers('https://jsonplaceholder.typicode.com/invalid-endpoint-url-999');
+        });
+    </script>
+</body>
+</html> 
