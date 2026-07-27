@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Day 5: Task Tracker</title>
+    <style>
+        body { font-family: sans-serif; max-width: 400px; margin: 40px auto; }
+        .task-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        .task-text { cursor: pointer; flex-grow: 1; }
+        .done { text-decoration: line-through; color: #aaa; }
+        .delete-btn { background: #ff4d4d; color: white; border: none; padding: 5px 10px; cursor: pointer; }
+        .input-group { display: flex; gap: 10px; margin-bottom: 20px; }
+        input { flex-grow: 1; padding: 8px; }
+        button#addTaskBtn { padding: 8px 15px; }
+    </style>
+</head>
+<body>
+
+    <h2>Task Tracker</h2>
+    
+    <div class="input-group">
+        <input type="text" id="taskInput" placeholder="Enter a new task...">
+        <button id="addTaskBtn">Add</button>
+    </div>
+
+    <div id="taskList"></div>
+
+    <script src="day5.js"></script>
+</body>
+</html>
